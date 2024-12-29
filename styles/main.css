@@ -1,0 +1,88 @@
+body {
+    background: linear-gradient(135deg, #ffffff 0%, #87CEEB 100%);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #2ecc71;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.ad-content {
+    font-family: 'Traditional Arabic', serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.preview-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.preview-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.platform-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.platform-badge.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+.platform-badge.instagram {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    color: white;
+}
+
+.platform-badge.google {
+    background-color: #4285f4;
+    color: white;
+}
