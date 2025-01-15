@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import AdForm from './components/AdForm';
 import Courses from './components/Courses';
 import './styles/index.css';
+import FacebookIcon from './assets/images/تصميم بدون عنوان (3).png';
+import InstagramIcon from './assets/images/لقطة شاشة 2025-01-15 112104.png';
+import GoogleIcon from './assets/images/312.png';
+import Logo from './assets/images/12.png';
 
 function App() {
     const [showCourses, setShowCourses] = useState(false);
@@ -19,8 +23,9 @@ function App() {
 
                 {/* Logo and Title */}
                 <div className="relative pt-20 pb-16 text-center">
+                    <img src={Logo} alt="Logo" className="mx-auto mb-4 w-32 h-32" />
                     <h1 className="text-7xl font-bold text-white mb-4 tracking-wider">
-                        VENOMEDIA
+                        اعلنك عندنا - نجاحك في إعلانك
                     </h1>
                     <p className="text-2xl text-yellow-100/90 tracking-widest">
                         - CREATING ADVERTION -
@@ -58,6 +63,11 @@ function App() {
                     {showCourses ? <Courses /> : <AdForm />}
                 </div>
             </main>
+
+            {/* Footer */}
+            <footer className="text-center py-4">
+                <p className="text-white">جميع الحقوق محفوظة لشركة جرين لايت</p>
+            </footer>
         </div>
     );
 }
