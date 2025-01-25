@@ -34,7 +34,7 @@ const Login: React.FC = () => {
         <img 
           src="assets/images/customer-service.png" 
           alt="خدمة العملاء" 
-          className="w-8 h-8 rounded-full"
+          className="w-8 h-8"
         />
         <span className="hidden sm:inline">خدمة العملاء</span>
       </button>
