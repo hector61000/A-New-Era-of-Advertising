@@ -2,30 +2,24 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/auth/Login';
 import AdForm from './components/AdForm';
-import Courses from './components/Courses';
 import Navbar from './components/Navbar';
 import './styles/index.css';
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const user = localStorage.getItem('user');
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+  return <>{children}</>;
+};
 
 const App: React.FC = () => {
   const [showCourses, setShowCourses] = React.useState(false);
 
-  // التحقق من وجود مستخدم مسجل
-  const isAuthenticated = () => {
-    return localStorage.getItem('user') !== null;
-  };
-
-  // مكون محمي يتطلب تسجيل الدخول
-  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-    if (!isAuthenticated()) {
-      return <Navigate to="/login" replace />;
-    }
-    return <>{children}</>;
-  };
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route
           path="/dashboard"
           element={
@@ -74,7 +68,12 @@ const App: React.FC = () => {
                   {/* Main Content */}
                   <main className="container mx-auto px-4 pb-12">
                     <div className="max-w-4xl mx-auto">
-                      {showCourses ? <Courses /> : <AdForm />}
+                      {!showCourses && <AdForm />}
+                      {showCourses && (
+                        <div className="text-center text-2xl text-gray-600">
+                          قريباً...
+                        </div>
+                      )}
                     </div>
                   </main>
                 </div>
@@ -82,7 +81,7 @@ const App: React.FC = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
