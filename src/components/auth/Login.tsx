@@ -29,14 +29,15 @@ const Login: React.FC = () => {
       {/* زر خدمة العملاء */}
       <button
         onClick={handleCustomerSupport}
-        className="fixed top-4 left-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full flex items-center gap-2 transition-colors duration-200 shadow-lg"
+        className="fixed top-4 left-4 transition-transform hover:scale-105 focus:outline-none"
+        title="تواصل مع خدمة العملاء"
       >
         <img 
           src="assets/images/customer-service.png" 
           alt="خدمة العملاء" 
-          className="w-8 h-8"
+          className="w-16 h-auto"
+          style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))' }}
         />
-        <span className="hidden sm:inline">خدمة العملاء</span>
       </button>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center justify-center">
