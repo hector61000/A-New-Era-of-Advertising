@@ -1,8 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/auth/Login';
 import AdForm from './components/AdForm';
 import Navbar from './components/Navbar';
+import { useState } from 'react';
 import './styles/index.css';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -14,10 +14,10 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 };
 
 const App: React.FC = () => {
-  const [showCourses, setShowCourses] = React.useState(false);
+  const [showCourses, setShowCourses] = useState(false);
 
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route
@@ -26,13 +26,12 @@ const App: React.FC = () => {
             <ProtectedRoute>
               <>
                 <Navbar />
-                <div className="min-h-screen" style={{ backgroundColor: '#E6F4FF' }}>
-                  {/* Header with Logo */}
+                <div className="min-h-screen bg-[#E6F4FF]">
                   <header className="py-8 text-center">
                     <div className="max-w-xl mx-auto">
-                      <div className="bg-[#E6F4FF] p-4 rounded-lg">
+                      <div className="p-4 rounded-lg">
                         <img 
-                          src="assets/images/logo.png" 
+                          src="/assets/images/logo.png" 
                           alt="إعلانيكس" 
                           className="w-full h-auto object-contain"
                           style={{ maxHeight: '120px' }}
@@ -41,7 +40,6 @@ const App: React.FC = () => {
                     </div>
                   </header>
 
-                  {/* Navigation */}
                   <nav className="relative flex justify-center gap-4 pb-8">
                     <button
                       onClick={() => setShowCourses(false)}
@@ -65,7 +63,6 @@ const App: React.FC = () => {
                     </button>
                   </nav>
 
-                  {/* Main Content */}
                   <main className="container mx-auto px-4 pb-12">
                     <div className="max-w-4xl mx-auto">
                       {!showCourses && <AdForm />}
@@ -83,7 +80,7 @@ const App: React.FC = () => {
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 
