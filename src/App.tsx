@@ -1,65 +1,91 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Login from './components/auth/Login';
 import AdForm from './components/AdForm';
 import Courses from './components/Courses';
+import Navbar from './components/Navbar';
 import './styles/index.css';
 
-function App() {
-    const [showCourses, setShowCourses] = useState(false);
+const App: React.FC = () => {
+  const [showCourses, setShowCourses] = React.useState(false);
 
-    return (
-        <div className="min-h-screen bg-purple-900">
-            {/* Header */}
-            <header className="relative overflow-hidden">
-                {/* Background Elements */}
-                <div className="absolute top-0 left-0 w-full h-full">
-                    <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-purple-600/50 blur-xl"></div>
-                    <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-orange-500/30 blur-xl"></div>
-                    <div className="absolute bottom-10 left-1/4 w-24 h-24 rounded-full bg-purple-400/40 blur-lg"></div>
-                </div>
+  // التحقق من وجود مستخدم مسجل
+  const isAuthenticated = () => {
+    return localStorage.getItem('user') !== null;
+  };
 
-                {/* Logo and Title */}
-                <div className="relative pt-20 pb-16 text-center">
-                    <h1 className="text-7xl font-bold text-white mb-4 tracking-wider">
-                        VENOMEDIA
-                    </h1>
-                    <p className="text-2xl text-yellow-100/90 tracking-widest">
-                        - CREATING ADVERTION -
-                    </p>
-                </div>
+  // مكون محمي يتطلب تسجيل الدخول
+  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+    if (!isAuthenticated()) {
+      return <Navigate to="/login" replace />;
+    }
+    return <>{children}</>;
+  };
 
-                {/* Navigation */}
-                <nav className="relative flex justify-center gap-4 pb-8">
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <>
+                <Navbar />
+                <div className="min-h-screen" style={{ backgroundColor: '#E6F4FF' }}>
+                  {/* Header with Logo */}
+                  <header className="py-8 text-center">
+                    <div className="max-w-xl mx-auto">
+                      <div className="bg-[#E6F4FF] p-4 rounded-lg">
+                        <img 
+                          src="assets/images/logo.png" 
+                          alt="إعلانيكس" 
+                          className="w-full h-auto object-contain"
+                          style={{ maxHeight: '120px' }}
+                        />
+                      </div>
+                    </div>
+                  </header>
+
+                  {/* Navigation */}
+                  <nav className="relative flex justify-center gap-4 pb-8">
                     <button
-                        onClick={() => setShowCourses(false)}
-                        className={`px-6 py-2 rounded-lg transition-all ${
-                            !showCourses 
-                            ? 'bg-orange-500 text-white shadow-lg'
-                            : 'bg-purple-800/50 text-purple-200 hover:bg-purple-800'
-                        }`}
+                      onClick={() => setShowCourses(false)}
+                      className={`px-6 py-2 rounded-lg transition-all ${
+                        !showCourses
+                          ? 'bg-[#0056b3] text-white shadow-lg'
+                          : 'bg-[#84b1cf] text-gray-900 hover:bg-[#0056b3] hover:text-white'
+                      }`}
                     >
-                        إنشاء إعلان
+                      إنشاء إعلان
                     </button>
                     <button
-                        onClick={() => setShowCourses(true)}
-                        className={`px-6 py-2 rounded-lg transition-all ${
-                            showCourses 
-                            ? 'bg-orange-500 text-white shadow-lg'
-                            : 'bg-purple-800/50 text-purple-200 hover:bg-purple-800'
-                        }`}
+                      onClick={() => setShowCourses(true)}
+                      className={`px-6 py-2 rounded-lg transition-all ${
+                        showCourses
+                          ? 'bg-[#10B981] text-white shadow-lg'
+                          : 'bg-[#84b1cf] text-gray-900 hover:bg-[#10B981] hover:text-white'
+                      }`}
                     >
-                        كورسات
+                      كورسات
                     </button>
-                </nav>
-            </header>
+                  </nav>
 
-            {/* Main Content */}
-            <main className="container mx-auto px-4 pb-12">
-                <div className="max-w-4xl mx-auto">
-                    {showCourses ? <Courses /> : <AdForm />}
+                  {/* Main Content */}
+                  <main className="container mx-auto px-4 pb-12">
+                    <div className="max-w-4xl mx-auto">
+                      {showCourses ? <Courses /> : <AdForm />}
+                    </div>
+                  </main>
                 </div>
-            </main>
-        </div>
-    );
-}
+              </>
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default App;
