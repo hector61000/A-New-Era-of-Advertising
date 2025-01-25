@@ -33,7 +33,7 @@ const Login: React.FC = () => {
         title="تواصل مع خدمة العملاء"
       >
         <img 
-          src="assets/images/customer-service.png" 
+          src="assets/images/customer-service..png" 
           alt="خدمة العملاء" 
           className="w-16 h-auto"
           style={{ filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))' }}
