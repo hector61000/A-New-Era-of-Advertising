@@ -20,42 +20,9 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleCustomerSupport = () => {
-    window.open('https://wa.me/201030435987', '_blank');
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center relative" style={{ backgroundColor: '#E6F4FF' }}>
-      {/* زر خدمة العملاء */}
-      <button
-        onClick={handleCustomerSupport}
-        className="fixed top-8 left-8 transition-transform hover:scale-105 focus:outline-none z-50"
-        title="تواصل مع خدمة العملاء"
-      >
-        <img 
-          src="assets/images/customer-service..png" 
-          alt="خدمة العملاء" 
-          className="w-32 h-auto"
-          style={{ 
-            filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2))',
-            maxWidth: 'none'
-          }}
-        />
-      </button>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center justify-center">
-        {/* الشعار */}
-        <div className="w-full max-w-sm mb-8">
-          <div className="bg-[#E6F4FF] rounded-lg flex justify-center items-center" style={{ height: '120px' }}>
-            <img 
-              src="assets/images/logo.png" 
-              alt="إعلانيكس - ثورة التكنولوجيا في عالم الإعلانات" 
-              className="max-h-full w-auto p-4"
-              style={{ objectFit: 'contain' }}
-            />
-          </div>
-        </div>
-
         {/* قسم تسجيل الدخول */}
         <div className="w-full max-w-sm">
           <div style={{ backgroundColor: '#84b1cf' }} className="p-6 sm:p-8 rounded-lg shadow-lg">

@@ -30,12 +30,6 @@ const App: React.FC = () => {
                   <header className="py-8 text-center">
                     <div className="max-w-xl mx-auto">
                       <div className="p-4 rounded-lg">
-                        <img 
-                          src="/assets/images/logo.png" 
-                          alt="إعلانيكس" 
-                          className="w-full h-auto object-contain"
-                          style={{ maxHeight: '120px' }}
-                        />
                       </div>
                     </div>
                   </header>

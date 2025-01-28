@@ -86,7 +86,7 @@ function AdForm() {
             const imageDescription = await generateImageDescription(formData.productName, formData.description, formData.platform);
 
             // إضافة رابط الواتساب والهاشتاجات
-            const finalText = `${adText}\n\n📱 للتواصل واتساب:\nwa.me/${formData.whatsapp}\n\n${hashtags.map(tag => `#${tag}`).join(' ')}`;
+            const finalText = `${adText}\n\n📱 للتواصل واتساب:\nhttps://wa.me/${formData.whatsapp}\n\n${hashtags.map(tag => `#${tag}`).join(' ')}`;
 
             setGeneratedAd({ 
                 text: finalText,
