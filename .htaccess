@@ -1,0 +1,22 @@
+# تفعيل محرك إعادة الكتابة
+RewriteEngine On
+
+# إعادة توجيه الطلبات إلى الملفات PHP
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+
+# تعيين الصفحة الافتراضية
+DirectoryIndex index.html index.php
+
+# منع الوصول إلى ملفات .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# منع عرض محتويات المجلدات
+Options -Indexes
+
+# تعيين ترميز UTF-8
+AddDefaultCharset UTF-8

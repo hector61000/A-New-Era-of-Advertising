@@ -8,5 +8,20 @@
 <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+        // التحقق من وجود معلومات تسجيل الدخول في localStorage
+        window.addEventListener('DOMContentLoaded', function() {
+            const userPhone = localStorage.getItem('userPhone');
+            if (!userPhone) {
+                // إضافة رابط تسجيل الدخول في أعلى الصفحة
+                const loginLink = document.createElement('div');
+                loginLink.style.position = 'absolute';
+                loginLink.style.top = '10px';
+                loginLink.style.left = '10px';
+                loginLink.innerHTML = '<a href="/admin/" style="background-color: #4f46e5; color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none;">تسجيل الدخول</a>';
+                document.body.appendChild(loginLink);
+            }
+        });
+    </script>
 </body>
 </html>
